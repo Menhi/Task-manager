@@ -50,6 +50,7 @@ int main()
               "3 - delete Task\n"
               "4 - exit"<<endl;
         cin>>choice;
+        cout<<(char)cin.get();
         switch (choice) {
         case 1:
             addTask(tasks, unique_num_task);

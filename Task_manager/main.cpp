@@ -54,6 +54,7 @@ int main()
         switch (choice) {
         case 1:
             addTask(tasks, unique_num_task);
+            unique_num_task++;
             break;
 
         case 2:
@@ -78,6 +79,7 @@ int main()
                     if (obj.unique_num == delete_num){
                         obj = tasks.back();
                         tasks.pop_back();
+                        break;
                     }
                 }
             }

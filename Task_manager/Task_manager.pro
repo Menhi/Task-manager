@@ -4,4 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        add_task.cpp \
+        main.cpp \
+        save_load_in_file.cpp
+
+HEADERS += \
+    Task.h

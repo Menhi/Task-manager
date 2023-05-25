@@ -1,99 +1,55 @@
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <iomanip>
-#include <vector>
+#include "Task.h"
 
-using namespace std;
-
-
-class DateAndTime
-{
-    int Day;
-    int Month;
-    int Year;
-    int Hour;
-    int Minute;
-};
-
-
-class Task{
-public:
-    int unique_num;
-    string Name;
-    string Description;
-    int Day;
-    int Month;
-    int Year;
-    int Hour;
-    int Minute;
-};
-
-void addTask (vector<Task> &tasks, int unique_num){
-    Task task;
-    task.unique_num=unique_num;
-    cout << "Enter task name: ";
-    getline(cin, task.Name);
-    cout << "Enter task description: ";
-    getline(cin, task.Description);
-    cout << "Enter due date (dd mm yyyy): ";
-    cin >> task.Day>>task.Month>>task.Year;
-    cout << "Enter due time (hh mm): ";
-    cin >> task.Hour>>task.Minute;
-    tasks.push_back(task);
-}
-
-int main()
-{
-    vector<Task> tasks;
+int main() {
+    std::vector<Task> tasks;
     int choice;
-    int unique_num_task=0;
-    int delete_num;
-    while (true)
-    {
-        cout<<"What you want to do?\n"
-              "1 - add Task\n"
-              "2 - see all Tasks\n"
-              "3 - delete Task\n"
-              "4 - exit"<<endl;
-        cin>>choice;
-        cin.get();
+    int unique_num_task = 0;
+    int delete_num_task;
+    while (true) {
+        std::cout << "What do you want to do?\n"
+                     "1 - Add Task\n"
+                     "2 - See all Tasks\n"
+                     "3 - Delete Task\n"
+                     "4 - Exit" << std::endl;
+        std::cin >> choice;
+        std::cin.ignore();
         switch (choice) {
-        case 1:
-            addTask(tasks, unique_num_task);
-            unique_num_task++;
-            break;
+            case 1:
+                addTask(tasks, unique_num_task);
+                unique_num_task++;
+                break;
 
-        case 2:
-            if (tasks.empty())
-                cout << "No one task exist.\n";
-            else {
-                for (auto& x:tasks){
-                    cout<<"Unique num and Name: "<<x.unique_num<<" "<<x.Name<<endl<<x.Description<<endl;
-                    cout<<x.Day<<"."<<x.Month<<"."<<x.Year<<endl;
-                    cout<<x.Hour<<":"<<x.Minute<<endl;
-                }
-            }
-            break;
-
-        case 3:
-            if (tasks.empty())
-                cout << "No one task exist.\n";
-            else {
-                cout<<"Num of task you want to delete: ";
-                cin>>delete_num;
-                for (auto& obj : tasks) {
-                    if (obj.unique_num == delete_num){
-                        obj = tasks.back();
-                        tasks.pop_back();
-                        break;
+            case 2:
+                if (tasks.empty())
+                    std::cout << "No tasks exist." << std::endl;
+                else {
+                    for (auto& task : tasks) {
+                        std::cout << "Unique num and Name: " << task.unique_num << " " << task.Name << std::endl
+                                  << task.Description << std::endl;
+                        std::cout << task.Day << "." << task.Month << "." << task.Year << std::endl;
+                        std::cout << task.Hour << ":" << task.Minute << std::endl;
                     }
                 }
-            }
-            break;
+                break;
 
-        case 4:
-            return 0;
+            case 3:
+                if (tasks.empty())
+                    std::cout << "No tasks exist." << std::endl;
+                else {
+                    std::cout << "Num of task you want to delete: ";
+                    std::cin >> delete_num_task;
+                    std::cin.ignore();
+                    for (auto i = tasks.begin(); i != tasks.end(); ++i) {
+                        if (i->unique_num == delete_num_task) {
+                            tasks.erase(i);
+                            break;
+                        }
+                    }
+                }
+                break;
+
+            case 4:
+                return 0;
         }
     }
     return 0;

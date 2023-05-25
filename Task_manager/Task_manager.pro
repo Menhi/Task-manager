@@ -6,6 +6,7 @@ CONFIG -= qt
 SOURCES += \
         add_task.cpp \
         main.cpp \
+        random_functions.cpp \
         save_load_in_file.cpp
 
 HEADERS += \

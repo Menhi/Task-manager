@@ -23,4 +23,9 @@ public:
 
 void addTask(std::vector<Task>& tasks, int unique_num);
 
+void saveTasksToFile(const std::vector<Task>& tasks);
+void loadTasksFromFile(std::vector<Task>& tasks);
+
+void ascribe_zero (int numb);
+
 #endif // TASK_H

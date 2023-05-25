@@ -4,9 +4,17 @@
 #include <iomanip>
 #include <vector>
 
-
 using namespace std;
 
+
+class DateAndTime
+{
+    int Day;
+    int Month;
+    int Year;
+    int Hour;
+    int Minute;
+};
 
 
 class Task{
@@ -41,9 +49,8 @@ int main()
     int choice;
     int unique_num_task=0;
     int delete_num;
-    while (1)
+    while (true)
     {
-        delete_num = -1;
         cout<<"What you want to do?\n"
               "1 - add Task\n"
               "2 - see all Tasks\n"
